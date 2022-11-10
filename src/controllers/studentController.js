@@ -10,7 +10,7 @@ const createStudent = async function(req , res){
         if(typeof(Subject) != "string" || Subject.trim().length == 0){
             return res.status(400).send({status : false , message : "Enter valid Subject"})
         }
-        if(typeof(Marks) != "number"){
+        if((Number(Marks)) != NaN){
             return res.status(400).send({status : false , message : "Enter valid Number"})
         }
         let existStudent = await studentModel.findOne({Name : Name , Subject : Subject , userId : userId})
